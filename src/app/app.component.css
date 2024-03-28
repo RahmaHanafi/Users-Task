@@ -1,0 +1,7 @@
+.bg {
+  background-color: rgba(193, 188, 220, 0.225);
+  width: 100%;
+  background-size: 100%;
+  background-size: cover;
+  height: 100vh;
+}

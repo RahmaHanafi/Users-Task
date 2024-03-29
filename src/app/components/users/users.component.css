@@ -1,5 +1,5 @@
 /* mat-grid-list {
-  gap: 0.1rem;
+  gap: 0.5rem;
 } */
 
 mat-card {
@@ -7,7 +7,7 @@ mat-card {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60%;
+  width: 65%;
   min-width: fit-content;
 }
 
@@ -50,6 +50,7 @@ ul {
 @media only screen and (max-width: 420px) {
   mat-card {
     width: 65%;
+    min-width: 90%;
   }
   mat-card-header {
     font-size: small;
@@ -61,7 +62,7 @@ ul {
 }
 
 .bg {
-  background-image: url("../../../assets/bg.jpg");
+  background-image: url(/assets/bg.jpg);
   background-repeat: no-repeat;
   width: 100%;
   background-size: 100%;

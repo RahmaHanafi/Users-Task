@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class DemoService {
+export class UserService {
   constructor(
     private myClient: HttpClient,
     private cacheService: CacheService

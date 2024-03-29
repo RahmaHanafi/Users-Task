@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AllUserComponent } from './components/all-user/all-user.component';
-import { SpecificUserComponent } from './components/specific-user/specific-user.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/users/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -14,19 +14,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component';
 import { MatInputModule } from '@angular/material/input';
-import { BackBtnComponent } from './components/back-btn/back-btn.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SpinnerComponent } from './components/spinner/spinner.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AllUserComponent,
-    SpecificUserComponent,
-    HeaderComponent,
-    BackBtnComponent,
-    SpinnerComponent,
-  ],
+  declarations: [AppComponent, UsersComponent, UserComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +31,7 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     MatIconModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

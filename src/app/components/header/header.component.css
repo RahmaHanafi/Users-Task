@@ -7,10 +7,17 @@ header {
 }
 
 mat-form-field {
+  margin: 1rem 0 0 0;
   width: 35%;
   border-radius: 20px;
   font-family: "Expletus Sans";
   border-color: transparent;
+}
+
+@media only screen and (max-width: 700px) {
+  mat-form-field {
+    width: 80%;
+  }
 }
 
 /* input {

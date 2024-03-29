@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllUserComponent } from './components/all-user/all-user.component';
-import { SpecificUserComponent } from './components/specific-user/specific-user.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/users/user/user.component';
 
 const routes: Routes = [
-  { path: '', component: AllUserComponent },
-  { path: 'users', component: AllUserComponent },
-  { path: 'users/:id', component: SpecificUserComponent },
+  { path: '', component: UsersComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'users/:id', component: UserComponent },
 ];
 
 @NgModule({

@@ -18,3 +18,10 @@ body {
     padding: 0 0.5rem 0 0.5rem;
   }
 }
+
+.spinner-style {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

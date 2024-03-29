@@ -1,17 +1,27 @@
 <div class="container">
-  <div *ngIf="isLoading; else not_loading">
-    <app-spinner></app-spinner>
+  <div *ngIf="isLoading; else not_loading" class="spinner-style">
+    <mat-spinner></mat-spinner>
   </div>
 
   <ng-template #not_loading>
     <mat-card>
       <div class="cover">
-        <app-back-btn></app-back-btn>
+        <div class="example-button-container">
+          <button
+            mat-mini-fab
+            color="primary"
+            aria-label="Example icon button with a filter list icon"
+            (click)="backClicked()"
+          >
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
         <div class="flex">
           <img
             mat-card-avatar
             src="{{ user?.avatar }}"
             alt="{{ user?.first_name }} {{ user?.last_name }}"
+            loading="lazy"
           />
           <div class="content">
             <mat-card-header

@@ -13,7 +13,7 @@ mat-card {
 }
 
 .cover {
-  background-image: url("../../../assets/cover.jpg");
+  background-image: url(/assets/cover.jpg);
   position: relative;
   height: 50vh;
   width: 100%;
@@ -70,4 +70,12 @@ mat-card-content {
   mat-card-content {
     font-size: medium;
   }
+}
+
+button {
+  margin: 3rem 0 0 3rem;
+  background-color: white;
+}
+mat-icon {
+  color: blueviolet;
 }

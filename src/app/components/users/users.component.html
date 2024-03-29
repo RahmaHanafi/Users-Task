@@ -1,7 +1,7 @@
-<app-header></app-header>
+<app-header (myEvent)="getDataFromSearch($event)"></app-header>
 <div class="container">
-  <div *ngIf="isLoading; else not_loading">
-    <app-spinner></app-spinner>
+  <div *ngIf="isLoading; else not_loading" class="spinner-style">
+    <mat-spinner></mat-spinner>
   </div>
   <ng-template #not_loading>
     <mat-grid-list
@@ -9,13 +9,14 @@
       (window:resize)="handleSize($event)"
       rowHeight="20rem"
     >
-      <mat-grid-tile *ngFor="let user of allUsers">
+      <mat-grid-tile *ngFor="let user of filteredUsers">
         <mat-card
           ><div class="bg">
             <img
               mat-card-avatar
               src="{{ user.avatar }}"
               alt="{{ user.first_name }} {{ user.last_name }}"
+              loading="lazy"
             />
           </div>
 
@@ -41,6 +42,7 @@
       aria-label="Select page"
       [pageIndex]="pageIndex"
       (page)="handlePageEvent($event)"
+      *ngIf="filteredUsers.length > 1"
     >
     </mat-paginator>
   </ng-template>

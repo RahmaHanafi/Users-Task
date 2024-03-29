@@ -71,12 +71,3 @@ mat-card-content {
     font-size: medium;
   }
 }
-
-button {
-  margin: 3rem 0 0 3rem;
-  background-color: white;
-  /* color: white; */
-}
-mat-icon {
-  color: blueviolet;
-}

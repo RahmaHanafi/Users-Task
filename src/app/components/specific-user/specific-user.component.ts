@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import IUser from 'src/app/interface/user.interface';
 import { DemoService } from 'src/app/services/demo.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-specific-user',
@@ -12,12 +11,9 @@ import { Location } from '@angular/common';
 export class SpecificUserComponent implements OnInit {
   ID: number = 0;
   user: IUser | undefined;
+  isLoading: boolean = true;
 
-  constructor(
-    public myService: DemoService,
-    myActived: ActivatedRoute,
-    private _location: Location
-  ) {
+  constructor(public myService: DemoService, myActived: ActivatedRoute) {
     this.ID = myActived.snapshot.params['id'];
   }
 
@@ -25,12 +21,8 @@ export class SpecificUserComponent implements OnInit {
     this.myService.getUserByID(this.ID).subscribe({
       next: (res) => {
         this.user = res.data;
-        // console.log(res);
+        this.isLoading = false;
       },
     });
-  }
-
-  backClicked() {
-    this._location.back();
   }
 }

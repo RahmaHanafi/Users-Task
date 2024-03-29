@@ -17,6 +17,7 @@ export class AllUserComponent implements OnInit {
   length: number | undefined;
   pageSize: number | undefined;
   pageEvent: PageEvent | undefined;
+  isLoading: boolean = true;
 
   allUsers: IUser[] = [];
 
@@ -26,7 +27,7 @@ export class AllUserComponent implements OnInit {
         this.allUsers = res.data;
         this.length = res.total;
         this.pageSize = res.per_page;
-        // console.log(res);
+        this.isLoading = false;
       },
     });
   }
@@ -45,7 +46,8 @@ export class AllUserComponent implements OnInit {
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-    // console.log(this.pageIndex + 1);
+    this.isLoading = true;
+
     this.getUser();
   }
 }

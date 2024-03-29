@@ -1,29 +1,26 @@
 <div class="container">
-  <mat-card>
-    <div class="cover">
-      <div class="example-button-container">
-        <button
-          mat-mini-fab
-          color="primary"
-          aria-label="Example icon button with a filter list icon"
-          (click)="backClicked()"
-        >
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-      </div>
-      <div class="flex">
-        <img
-          mat-card-avatar
-          src="{{ user?.avatar }}"
-          alt="{{ user?.first_name }} {{ user?.last_name }}"
-        />
-        <div class="content">
-          <mat-card-header
-            >{{ user?.first_name }} {{ user?.last_name }}</mat-card-header
-          >
-          <mat-card-content>{{ user?.email }} </mat-card-content>
+  <div *ngIf="isLoading; else not_loading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <ng-template #not_loading>
+    <mat-card>
+      <div class="cover">
+        <app-back-btn></app-back-btn>
+        <div class="flex">
+          <img
+            mat-card-avatar
+            src="{{ user?.avatar }}"
+            alt="{{ user?.first_name }} {{ user?.last_name }}"
+          />
+          <div class="content">
+            <mat-card-header
+              >{{ user?.first_name }} {{ user?.last_name }}</mat-card-header
+            >
+            <mat-card-content>{{ user?.email }} </mat-card-content>
+          </div>
         </div>
       </div>
-    </div>
-  </mat-card>
+    </mat-card></ng-template
+  >
 </div>

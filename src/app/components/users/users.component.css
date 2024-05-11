@@ -1,6 +1,7 @@
-/* mat-grid-list {
-  gap: 0.5rem;
-} */
+.container {
+  padding-top: 7rem;
+  background-color: rgb(241, 240, 246);
+}
 
 mat-card {
   display: flex;
@@ -15,7 +16,7 @@ a {
   text-decoration: none;
   border-radius: 16rem;
   margin: 1.5rem 0 1.5rem 0;
-  font-weight: "Expletus Sans";
+  font-family: "Expletus Sans";
   /*color: rgb(25, 71, 146); */
 }
 
@@ -31,7 +32,7 @@ mat-card-content {
   font-family: "Expletus Sans";
 }
 
-img {
+.avater {
   margin-top: 1.5rem;
   height: 6rem;
   width: 6rem;
@@ -41,9 +42,27 @@ ul {
   list-style-type: none;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.user_not_found {
+  margin-top: 4rem;
+  height: 50vh;
+}
+.not_found_title {
+  font-family: "Expletus Sans";
+  font-size: large;
+  text-align: center;
+}
 @media only screen and (max-width: 800px) {
   mat-card {
     width: 90%;
+  }
+  .user_not_found {
+    height: 30vh;
   }
 }
 
@@ -58,6 +77,9 @@ ul {
   mat-card-content {
     font-family: "Expletus Sans";
     font-size: small;
+  }
+  .user_not_found {
+    height: 30vh;
   }
 }
 

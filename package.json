@@ -1,6 +1,11 @@
 {
   "name": "task",
   "version": "0.0.0",
+  "assets": [
+    "src/favicon.ico",
+    "src/assets",
+    "src/robots.txt"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import IUser from 'src/app/model/user.interface';
+import { throwError } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 import { UserService } from 'src/app/services/user.service';
+import IUser from 'src/app/model/user.interface';
 
 @Component({
   selector: 'app-specific-user',
@@ -23,12 +25,17 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.myService.getUserByID(this.ID).subscribe({
-      next: (res) => {
+    this.myService
+      .getUserByID(this.ID)
+      .pipe(
+        catchError((err) => throwError(() => err)),
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe((res) => {
         this.user = res.data;
-        this.isLoading = false;
-      },
-    });
+      });
   }
   backClicked() {
     this._location.back();

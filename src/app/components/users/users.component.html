@@ -4,46 +4,60 @@
     <mat-spinner></mat-spinner>
   </div>
   <ng-template #not_loading>
-    <mat-grid-list
-      [cols]="mybreakpoint"
-      (window:resize)="handleSize($event)"
-      rowHeight="20rem"
-    >
-      <mat-grid-tile *ngFor="let user of filteredUsers">
-        <mat-card
-          ><div class="bg">
-            <img
-              mat-card-avatar
-              src="{{ user.avatar }}"
-              alt="{{ user.first_name }} {{ user.last_name }}"
-              loading="lazy"
-            />
-          </div>
+    <section *ngIf="filteredUsers.length > 0; else user_not_found">
+      <mat-grid-list
+        [cols]="mybreakpoint"
+        (window:resize)="handleSize($event)"
+        rowHeight="20rem"
+      >
+        <mat-grid-tile *ngFor="let user of filteredUsers">
+          <mat-card
+            ><div class="bg">
+              <img
+                mat-card-avatar
+                src="{{ user.avatar }}"
+                alt="{{ user.first_name }} {{ user.last_name }}"
+                class="avater"
+                loading="lazy"
+              />
+            </div>
 
-          <mat-card-header
-            >{{ user.id }}. {{ user.first_name }}
-            {{ user.last_name }}</mat-card-header
-          >
-          <mat-card-content>{{ user.email }} </mat-card-content>
-          <a
-            routerLink="users/{{ user.id }}"
-            mat-stroked-button
-            color="primary"
-          >
-            View Profile
-          </a>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
+            <mat-card-header
+              >{{ user.id }}. {{ user.first_name }}
+              {{ user.last_name }}</mat-card-header
+            >
+            <mat-card-content>{{ user.email }} </mat-card-content>
+            <a
+              routerLink="users/{{ user.id }}"
+              mat-stroked-button
+              color="primary"
+            >
+              View Profile
+            </a>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
 
-    <mat-paginator
-      [length]="length"
-      [pageSize]="pageSize"
-      aria-label="Select page"
-      [pageIndex]="pageIndex"
-      (page)="handlePageEvent($event)"
-      *ngIf="filteredUsers.length > 1"
-    >
-    </mat-paginator>
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        aria-label="Select page"
+        [pageIndex]="pageIndex"
+        (page)="handlePageEvent($event)"
+        *ngIf="filteredUsers.length > 1"
+      >
+      </mat-paginator>
+    </section>
+
+    <ng-template #user_not_found>
+      <div class="center">
+        <img
+          src="/assets/not found.svg"
+          class="user_not_found"
+          alt="user not found"
+        />
+        <h1 class="not_found_title">Ups, There is no user with this ID</h1>
+      </div>
+    </ng-template>
   </ng-template>
 </div>

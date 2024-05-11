@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { PageEvent } from '@angular/material/paginator';
+import { catchError, finalize } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 import IUser from 'src/app/model/user.interface';
 
 @Component({
@@ -24,15 +26,20 @@ export class UsersComponent implements OnInit {
   dataFromSearch: string = '';
 
   getUser() {
-    return this.myService.getAllUsers(this.pageIndex + 1).subscribe({
-      next: (res) => {
+    return this.myService
+      .getAllUsers(this.pageIndex + 1)
+      .pipe(
+        catchError((err) => throwError(() => err)),
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe((res) => {
         this.allUsers = res.data;
         this.filteredUsers = res.data;
         this.length = res.total;
         this.pageSize = res.per_page;
-        this.isLoading = false;
-      },
-    });
+      });
   }
 
   ngOnInit(): void {
@@ -59,17 +66,20 @@ export class UsersComponent implements OnInit {
       this.filteredUsers = this.allUsers;
     } else {
       this.isLoading = true;
-      this.myService.getUserByID(+id).subscribe({
-        next: (res) => {
+      this.myService
+        .getUserByID(+id)
+        .pipe(
+          catchError((err) => {
+            this.filteredUsers = [];
+            return throwError(() => err);
+          }),
+          finalize(() => {
+            this.isLoading = false;
+          })
+        )
+        .subscribe((res) => {
           this.filteredUsers = [res.data];
-          this.isLoading = false;
-        },
-        error: (err) => {
-          this.filteredUsers = [];
-          this.isLoading = false;
-          return err;
-        },
-      });
+        });
     }
 
     // this.dataFromSearch = data;
@@ -80,6 +90,6 @@ export class UsersComponent implements OnInit {
     // if (data === '') return;
     // this.allUsers = this.allUsers.filter((user) => user.id === data);
 
-    console.log(id);
+    // console.log(id);
   }
 }

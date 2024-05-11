@@ -17,7 +17,6 @@ export class UserService {
 
   getAllUsers(page: number): Observable<any> {
     const cacheKey = `${this.BaseURL}?page=${page}`;
-
     return this.intercept(cacheKey);
   }
 

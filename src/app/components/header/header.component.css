@@ -1,9 +1,11 @@
 header {
   width: 100%;
-  background-color: rgb(140, 106, 177);
+  background-color: #8c6ab1;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  z-index: 5;
 }
 
 mat-form-field {
@@ -19,7 +21,3 @@ mat-form-field {
     width: 80%;
   }
 }
-
-/* input {
-  border-radius: 8px;
-} */
